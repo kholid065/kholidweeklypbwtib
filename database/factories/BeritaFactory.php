@@ -1,0 +1,30 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Model;
+use App\Models\Berita;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+/**
+ * @extends Factory<Model>
+ */
+class BeritaFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        $title=$this->faker->sentence(mt_rand(3,6));
+        return [
+            'judul'=>$title,
+            'slug' =>str::slug($title),
+            'penulis' => $this->faker->name(),
+            'content' => $this->faker->paragraph(),
+        ];
+    }
+}
